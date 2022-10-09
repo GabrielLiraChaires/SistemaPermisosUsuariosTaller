@@ -1,0 +1,6 @@
+C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\Entidades.PermisosUsuariosTaller\bin\Debug\Entidades.PermisosUsuariosTaller.dll
+C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\Entidades.PermisosUsuariosTaller\bin\Debug\Entidades.PermisosUsuariosTaller.pdb
+C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\Entidades.PermisosUsuariosTaller\obj\Debug\Entidades.PermisosUsuariosTaller.csproj.AssemblyReference.cache
+C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\Entidades.PermisosUsuariosTaller\obj\Debug\Entidades.PermisosUsuariosTaller.csproj.CoreCompileInputs.cache
+C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\Entidades.PermisosUsuariosTaller\obj\Debug\Entidades.PermisosUsuariosTaller.dll
+C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\Entidades.PermisosUsuariosTaller\obj\Debug\Entidades.PermisosUsuariosTaller.pdb
