@@ -32,11 +32,71 @@ namespace SistemaPermisosUsuariosTaller
 
         private void FrmModuloTaller_Load(object sender, EventArgs e)
         {
-            DialogResult rs = MessageBox.Show("¿Quiere cargar los registros actualmente existentes en la base de datos?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rs == DialogResult.Yes)
+            if (mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MTaller) == "Lectura" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MTaller) == "LecturaEliminacion" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MTaller) == "LecturaEscritura" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MTaller) == "LecturaEscrituraEliminacion" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MTaller) == "LecturaModificacion" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MTaller) == "Administrador")
             {
-                Actualizar();
+                DialogResult rs = MessageBox.Show("¿Quiere cargar los registros actualmente existentes en la base de datos?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rs == DialogResult.Yes)
+                {
+                    Actualizar();
+                    Condicionantes();
+                }
             }
+            else
+            {
+                MessageBox.Show("No cuentas con los permisos adecuados para acceder al formulario.", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Actualizar();
+        }
+
+        private void dgvTaller_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            taller.CodigoHerramienta= int.Parse(dgvTaller.Rows[fila].Cells[0].Value.ToString());
+            taller.Nombre = dgvTaller.Rows[fila].Cells[1].Value.ToString();
+            taller.Medida = Convert.ToDouble(dgvTaller.Rows[fila].Cells[2].Value.ToString());
+            taller.Marca= dgvTaller.Rows[fila].Cells[3].Value.ToString();
+            taller.Descripcion = dgvTaller.Rows[fila].Cells[4].Value.ToString();
+            switch (columna)
+            {
+                case 5:
+                    {
+                        idmodificador= int.Parse(dgvTaller.Rows[fila].Cells[0].Value.ToString());
+                        taller.CodigoHerramienta = 1;
+                        FrmModuloTallerAdd ja = new FrmModuloTallerAdd();
+                        ja.Show();
+                        txtBuscar.Text = "-1";
+                        txtBuscar.Clear();
+                        Actualizar();
+                    }
+                    break;
+                case 6:
+                    {
+                        mt.Borrar(taller);
+                        txtBuscar.Text = "";
+                        Actualizar();
+                    }
+                    break;
+            }
+        }
+
+        private void dgvTaller_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            fila = e.RowIndex;
+            columna = e.ColumnIndex;
+        }
+
+        public void Actualizar()
+        {
+            mt.Mostrar(dgvTaller, txtBuscar.Text);
+            Condicionantes();   
+        }
+
+        public void Condicionantes()
+        {
             if (mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MTaller) == "Lectura")
             {
                 btnAgregar.Enabled = false;
@@ -91,52 +151,6 @@ namespace SistemaPermisosUsuariosTaller
                 dgvTaller.Columns[5].Visible = true;
                 dgvTaller.Columns[6].Visible = true;
             }
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            Actualizar();
-        }
-
-        private void dgvTaller_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            taller.CodigoHerramienta= int.Parse(dgvTaller.Rows[fila].Cells[0].Value.ToString());
-            taller.Nombre = dgvTaller.Rows[fila].Cells[1].Value.ToString();
-            taller.Medida = Convert.ToDouble(dgvTaller.Rows[fila].Cells[2].Value.ToString());
-            taller.Marca= dgvTaller.Rows[fila].Cells[3].Value.ToString();
-            taller.Descripcion = dgvTaller.Rows[fila].Cells[4].Value.ToString();
-            switch (columna)
-            {
-                case 5:
-                    {
-                        idmodificador= int.Parse(dgvTaller.Rows[fila].Cells[0].Value.ToString());
-                        taller.CodigoHerramienta = 1;
-                        FrmModuloTallerAdd ja = new FrmModuloTallerAdd();
-                        ja.Show();
-                        txtBuscar.Text = "-1";
-                        txtBuscar.Clear();
-                        Actualizar();
-                    }
-                    break;
-                case 6:
-                    {
-                        mt.Borrar(taller);
-                        txtBuscar.Text = "";
-                        Actualizar();
-                    }
-                    break;
-            }
-        }
-
-        private void dgvTaller_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            fila = e.RowIndex;
-            columna = e.ColumnIndex;
-        }
-
-        public void Actualizar()
-        {
-            mt.Mostrar(dgvTaller, txtBuscar.Text);
         }
     }
 }

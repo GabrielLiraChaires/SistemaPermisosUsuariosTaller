@@ -139,17 +139,18 @@
             this.btnRegresar.Size = new System.Drawing.Size(36, 38);
             this.btnRegresar.TabIndex = 3;
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click_1);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(122, 9);
+            this.label1.Location = new System.Drawing.Point(103, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(265, 24);
+            this.label1.Size = new System.Drawing.Size(300, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "MODULO DE PRODUCTOS";
+            this.label1.Text = "MODULO DE HERRAMIENTAS";
             // 
             // FrmModuloTallerAdd
             // 

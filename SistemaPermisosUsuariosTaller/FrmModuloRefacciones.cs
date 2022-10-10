@@ -35,11 +35,64 @@ namespace SistemaPermisosUsuariosTaller
 
         private void FrmModuloRefacciones_Load(object sender, EventArgs e)
         {
-            DialogResult rs = MessageBox.Show("¿Quiere cargar los registros actualmente existentes en la base de datos?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rs == DialogResult.Yes)
+            if (mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MHerramientas) == "Lectura" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MHerramientas) == "LecturaEliminacion" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MHerramientas) == "LecturaEscritura" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MHerramientas) == "LecturaEscrituraEliminacion" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MHerramientas) == "LecturaModificacion" || mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MHerramientas) == "Administrador")
             {
-                Actualizar();
+                DialogResult rs = MessageBox.Show("¿Quiere cargar los registros actualmente existentes en la base de datos?", "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rs == DialogResult.Yes)
+                {
+                    Actualizar();
+                    Condicionantes();
+                }
             }
+            else
+            {
+                MessageBox.Show("No cuentas con los permisos adecuados para acceder al formulario.", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
+        }
+
+        private void dgvRefacciones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            refaccion.CodigoBarras = dgvRefacciones.Rows[fila].Cells[0].Value.ToString();
+            refaccion.Nombre= dgvRefacciones.Rows[fila].Cells[1].Value.ToString();
+            refaccion.Descripcion=dgvRefacciones.Rows[fila].Cells[2].Value.ToString();
+            refaccion.Marca= dgvRefacciones.Rows[fila].Cells[3].Value.ToString();
+            switch (columna)
+            {
+                case 4:
+                    {
+                        refaccion.Opcion = 1;
+                        FrmModuloRefaccionesAdd ja = new FrmModuloRefaccionesAdd();
+                        ja.Show();
+                        txtBuscar.Text = "-1";
+                        txtBuscar.Clear();
+                        Actualizar();
+                    }
+                    break;
+                case 5:
+                    {
+                        mr.Borrar(refaccion);
+                        txtBuscar.Text = "";
+                        Actualizar();
+                    }
+                    break;
+            }
+        }
+
+        private void dgvRefacciones_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            fila = e.RowIndex;
+            columna = e.ColumnIndex;
+        }
+
+        public void Actualizar()
+        {
+            mr.Mostrar(dgvRefacciones, txtBuscar.Text);
+            Condicionantes();
+        }
+
+        public void Condicionantes()
+        {
             if (mp.AsignacionPermisos(FrmLogin.usuario, FrmLogin.clave, FrmLogin.MHerramientas) == "Lectura")
             {
                 btnAgregar.Visible = false;
@@ -94,45 +147,6 @@ namespace SistemaPermisosUsuariosTaller
                 dgvRefacciones.Columns[4].Visible = true;
                 dgvRefacciones.Columns[5].Visible = true;
             }
-        }
-
-        private void dgvRefacciones_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            refaccion.CodigoBarras = dgvRefacciones.Rows[fila].Cells[0].Value.ToString();
-            refaccion.Nombre= dgvRefacciones.Rows[fila].Cells[1].Value.ToString();
-            refaccion.Descripcion=dgvRefacciones.Rows[fila].Cells[2].Value.ToString();
-            refaccion.Marca= dgvRefacciones.Rows[fila].Cells[3].Value.ToString();
-            switch (columna)
-            {
-                case 4:
-                    {
-                        refaccion.Opcion = 1;
-                        FrmModuloRefaccionesAdd ja = new FrmModuloRefaccionesAdd();
-                        ja.Show();
-                        txtBuscar.Text = "-1";
-                        txtBuscar.Clear();
-                        Actualizar();
-                    }
-                    break;
-                case 5:
-                    {
-                        mr.Borrar(refaccion);
-                        txtBuscar.Text = "";
-                        Actualizar();
-                    }
-                    break;
-            }
-        }
-
-        private void dgvRefacciones_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            fila = e.RowIndex;
-            columna = e.ColumnIndex;
-        }
-
-        public void Actualizar()
-        {
-            mr.Mostrar(dgvRefacciones, txtBuscar.Text);
         }
     }
 }

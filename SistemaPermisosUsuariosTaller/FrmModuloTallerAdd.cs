@@ -38,5 +38,10 @@ namespace SistemaPermisosUsuariosTaller
                 Close();
             }
         }
+
+        private void btnRegresar_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
