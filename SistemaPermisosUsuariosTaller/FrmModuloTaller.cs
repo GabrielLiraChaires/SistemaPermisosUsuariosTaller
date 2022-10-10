@@ -100,6 +100,7 @@ namespace SistemaPermisosUsuariosTaller
 
         private void dgvTaller_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            taller.CodigoHerramienta= int.Parse(dgvTaller.Rows[fila].Cells[0].Value.ToString());
             taller.Nombre = dgvTaller.Rows[fila].Cells[1].Value.ToString();
             taller.Medida = Convert.ToDouble(dgvTaller.Rows[fila].Cells[2].Value.ToString());
             taller.Marca= dgvTaller.Rows[fila].Cells[3].Value.ToString();
@@ -119,9 +120,9 @@ namespace SistemaPermisosUsuariosTaller
                     break;
                 case 6:
                     {
-                        /*mt.Borrar(usuario);
+                        mt.Borrar(taller);
                         txtBuscar.Text = "";
-                        Actualizar();*/
+                        Actualizar();
                     }
                     break;
             }

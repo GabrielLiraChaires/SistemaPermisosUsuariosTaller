@@ -8,7 +8,7 @@ namespace AccesoDatos.PermisosUsuariosTaller
         Base b = new Base("localhost", "root", "", "PermisosTaller");
         public void Borrar(dynamic Entidad)
         {
-            throw new NotImplementedException();
+            b.Comando(String.Format("call DeleteHerramientas({0})", Entidad.CodigoHerramienta));
         }
 
         public void Guardar(dynamic Entidad)

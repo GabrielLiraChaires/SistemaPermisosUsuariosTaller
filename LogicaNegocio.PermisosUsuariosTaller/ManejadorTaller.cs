@@ -28,5 +28,14 @@ namespace LogicaNegocio.PermisosUsuariosTaller
             tabla.AutoResizeColumns();
             tabla.Columns[0].Visible = false;
         }
+
+        public void Borrar(dynamic Entidad)
+        {
+            DialogResult rs = MessageBox.Show(string.Format("¿Está seguro de borrar a la herramienta?"), "¡ATENCIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rs == DialogResult.Yes)
+            {
+                at.Borrar(Entidad);
+            }
+        }
     }
 }

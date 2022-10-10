@@ -116,9 +116,9 @@ namespace SistemaPermisosUsuariosTaller
                     break;
                 case 5:
                     {
-                        /*mr.Borrar(usuario);
+                        mr.Borrar(refaccion);
                         txtBuscar.Text = "";
-                        Actualizar();*/
+                        Actualizar();
                     }
                     break;
             }
