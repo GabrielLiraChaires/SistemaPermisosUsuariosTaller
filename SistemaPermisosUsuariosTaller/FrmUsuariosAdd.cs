@@ -7,8 +7,6 @@ namespace SistemaPermisosUsuariosTaller
     public partial class FrmUsuariosAdd : Form
     {
         ManejadorUsuarios mu;
-        public static int idusuario=0;
-        public static string modulo = "";
         public FrmUsuariosAdd()
         {
             InitializeComponent();

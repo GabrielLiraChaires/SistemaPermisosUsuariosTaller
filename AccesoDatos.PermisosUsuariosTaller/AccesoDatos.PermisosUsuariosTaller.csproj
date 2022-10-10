@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoPermisos.cs" />
+    <Compile Include="AccesoRefacciones.cs" />
+    <Compile Include="AccesoTaller.cs" />
     <Compile Include="AccesoUsuario.cs" />
+    <Compile Include="IEntidades.cs" />
     <Compile Include="InterfazPermisos.cs" />
     <Compile Include="InterfazUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

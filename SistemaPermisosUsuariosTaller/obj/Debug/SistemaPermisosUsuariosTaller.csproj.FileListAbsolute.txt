@@ -49,3 +49,5 @@ C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\SistemaPermisosUsuario
 C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\SistemaPermisosUsuariosTaller\obj\Debug\SistemaPermisosUsuariosTaller.csproj.CopyComplete
 C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\SistemaPermisosUsuariosTaller\obj\Debug\SistemaPermisosUsuariosTaller.exe
 C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\SistemaPermisosUsuariosTaller\obj\Debug\SistemaPermisosUsuariosTaller.pdb
+C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\SistemaPermisosUsuariosTaller\obj\Debug\SistemaPermisosUsuariosTaller.FrmModuloRefaccionesAdd.resources
+C:\Users\gabri\source\repos\SistemaPermisosUsuariosTaller\SistemaPermisosUsuariosTaller\obj\Debug\SistemaPermisosUsuariosTaller.FrmModuloTallerAdd.resources

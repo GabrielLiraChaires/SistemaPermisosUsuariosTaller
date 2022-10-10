@@ -50,6 +50,8 @@
             this.dgvTaller.ReadOnly = true;
             this.dgvTaller.Size = new System.Drawing.Size(874, 297);
             this.dgvTaller.TabIndex = 28;
+            this.dgvTaller.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaller_CellClick);
+            this.dgvTaller.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaller_CellEnter);
             // 
             // txtBuscar
             // 
@@ -57,6 +59,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(602, 26);
             this.txtBuscar.TabIndex = 26;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // label2
             // 
@@ -87,6 +90,7 @@
             this.btnRegresar.Size = new System.Drawing.Size(36, 38);
             this.btnRegresar.TabIndex = 3;
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // label1
             // 
@@ -108,6 +112,7 @@
             this.btnAgregar.Size = new System.Drawing.Size(49, 49);
             this.btnAgregar.TabIndex = 27;
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // FrmModuloTaller
             // 
